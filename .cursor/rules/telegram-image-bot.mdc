@@ -1,0 +1,65 @@
+---
+alwaysApply: true
+---
+
+---
+
+description: Rules for Telegram AI image bot
+globs:
+
+- "src/\*_/_.ts"
+  alwaysApply: true
+
+---
+
+# Tech Stack
+
+- Use TypeScript
+- Use Node.js
+- Use Telegraf
+- Use async/await only
+- Use ESM modules
+
+# Architecture
+
+- Keep handlers separated
+- Keep API logic in services/
+- Keep bot initialization in bot.ts
+- Avoid large files
+
+# Code Style
+
+- Prefer small pure functions
+- Use explicit types
+- Avoid any
+- Prefer const over let
+- Use early returns
+- Use try/catch for async flows
+
+# Telegram Rules
+
+- Use reply keyboard for main actions
+- Always answer user actions
+- Show loading message before image generation
+- Handle Telegram API errors
+
+# Pollinations API Rules
+
+- Keep API logic isolated in services/pollinations.ts
+- Encode prompts properly
+- Handle network failures
+- Use configurable timeout
+
+# Error Handling
+
+- Never crash the bot
+- Log all unexpected errors
+- Return friendly user messages
+
+# Forbidden
+
+- No database
+- No classes unless necessary
+- No global mutable state
+- No huge handler files
+- No business logic inside bot.ts
