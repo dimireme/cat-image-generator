@@ -1,4 +1,3 @@
-const DEFAULT_IMAGE_PROMPT = 'С добрым утром, красивый рассвет, уютный стиль';
 const DEFAULT_POLLINATIONS_TIMEOUT_MS = 60_000;
 
 const requireEnv = (name: string): string => {
@@ -26,7 +25,6 @@ export const env = {
   BOT_TOKEN: requireEnv('BOT_TOKEN'),
   POLLINATIONS_API_KEY: requireEnv('POLLINATIONS_API_KEY'),
   POLLINATIONS_TIMEOUT_MS: parseTimeoutMs(process.env.POLLINATIONS_TIMEOUT_MS),
-  IMAGE_PROMPT: process.env.IMAGE_PROMPT?.trim() || DEFAULT_IMAGE_PROMPT,
 } as const;
 
 export type Env = typeof env;

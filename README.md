@@ -2,6 +2,8 @@
 
 Telegram-бот с одной кнопкой «Сгенерить картинку». Генерирует изображение через [Pollinations API](https://gen.pollinations.ai/docs) и отправляет его пользователю.
 
+**Бот в Telegram:** [@GoodMorningImageGeneratot48Bot](https://t.me/GoodMorningImageGeneratot48Bot)
+
 ## Требования
 
 - Node.js 22+
@@ -17,12 +19,13 @@ cp .env.example .env
 
 Заполните `.env`:
 
-| Переменная | Описание |
-|------------|----------|
-| `BOT_TOKEN` | Токен бота от BotFather |
-| `POLLINATIONS_API_KEY` | API-ключ (`sk_...` для сервера) |
+| Переменная                | Описание                                  |
+| ------------------------- | ----------------------------------------- |
+| `BOT_TOKEN`               | Токен бота от BotFather                   |
+| `POLLINATIONS_API_KEY`    | API-ключ (`sk_...` для сервера)           |
 | `POLLINATIONS_TIMEOUT_MS` | Таймаут запроса в мс (по умолчанию 60000) |
-| `IMAGE_PROMPT` | Промпт для генерации |
+
+Промпты задаются в коде: [`src/prompts.ts`](src/prompts.ts) — случайный кот + случайное слово-атмосфера.
 
 ```bash
 yarn install
@@ -45,7 +48,7 @@ yarn start
 
 ## Проверка в Telegram
 
-1. Откройте бота и отправьте `/start` — появится кнопка «Сгенерить картинку».
+1. Откройте [@GoodMorningImageGeneratot48Bot](https://t.me/GoodMorningImageGeneratot48Bot) и отправьте `/start` — появится кнопка «Сгенерить картинку».
 2. Нажмите кнопку — бот ответит «Генерирую картинку...», затем пришлёт фото.
 3. При ошибке API — сообщение «Не удалось сгенерировать картинку. Попробуй позже.»
 
@@ -57,6 +60,7 @@ src/
 ├── bot.ts
 ├── config/env.ts
 ├── constants.ts
+├── prompts.ts
 ├── handlers/
 │   ├── start.ts
 │   └── generate.ts

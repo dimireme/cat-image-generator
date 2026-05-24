@@ -13,7 +13,11 @@ export class PollinationsError extends Error {
 }
 
 export const buildImageUrl = (prompt: string): string => {
-  return `${POLLINATIONS_BASE_URL}/image/${encodeURIComponent(prompt)}`;
+  const url = new URL(
+    `${POLLINATIONS_BASE_URL}/image/${encodeURIComponent(prompt)}`,
+  );
+  url.searchParams.set('seed', String(Math.floor(Math.random() * 2_147_483_647)));
+  return url.toString();
 };
 
 const isImageContentType = (contentType: string | null): boolean => {
