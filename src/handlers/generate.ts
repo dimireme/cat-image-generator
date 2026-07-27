@@ -11,7 +11,7 @@ import { logError, logInfo } from '../utils/logger.js';
 
 export const registerGenerateHandler = (bot: Telegraf<Context>): void => {
   bot.hears(BUTTON_GENERATE, async (ctx) => {
-    await ctx.reply(MSG_GENERATING);
+    const loadingMessage = await ctx.reply(MSG_GENERATING);
 
     try {
       const prompt = buildRandomPrompt();
@@ -29,6 +29,12 @@ export const registerGenerateHandler = (bot: Telegraf<Context>): void => {
       }
 
       await ctx.reply(MSG_ERROR);
+    } finally {
+      try {
+        await ctx.deleteMessage(loadingMessage.message_id);
+      } catch (error) {
+        logError('Failed to delete loading message', error);
+      }
     }
   });
 };
